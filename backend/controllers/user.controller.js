@@ -97,3 +97,55 @@ export const logout =async (req,res)=> {
         console.log(error);
     }
 }
+
+export const updateProfile = async (req,res) => {
+    try {
+        const {fullname,contactno,bio,skills} =req.body;
+        const file = req.file;
+        if(!fullname || !email || !contactno || !bio || !skills){
+            return res.status(400).json({
+                message:"something is missing",
+                success:false
+            });
+        };
+
+//Cloudinary content will come here
+
+        const skillsarray = skills.split(",");
+        const userId=req.id;  //middleware authentication
+        let user = await User.findById(userId);
+        
+        if(!user){
+            return res.status(400).json({
+                message:"User not found",
+                success:false
+            })
+        }
+        user.fullname=fullname,
+        user.email=email,
+        user.contactno=contactno,
+        user.profile.bio= bio,
+        user.profile.skills=skillsarray
+
+        // Resume content will come here , will do it later
+
+        await user.save();
+
+        user = {
+            _id:user._id,
+            fullname:user.fullname,
+            email:user.email,
+            contactno:user.contactno,
+            role:user.role,
+            profile:user.profile
+    
+        }
+        return res.status(200).json({
+            message:"profile updated successfully",
+            user,
+            success:true
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
