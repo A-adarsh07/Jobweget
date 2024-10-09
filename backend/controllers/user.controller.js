@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const register = async (req,res) => {
     try {
-        const{fullname,email,contactno,password,role} =req.body;
+        const{fullname,email,contactno,password,role} = req.body;
         if(!fullname || !email || !contactno || !password || !role) {
             return res.status(400).json({
                 message:"Something is missing",
@@ -30,7 +30,7 @@ export const register = async (req,res) => {
         return res.status(201).json({
             message:'Account created successfully',
             success:true
-        })
+        });
     } catch (error) {
         console.log(error);
     }
@@ -110,8 +110,11 @@ export const updateProfile = async (req,res) => {
         };
 
 //Cloudinary content will come here
+        let skillsarray ;
+        if(skills){
+         skillsarray = skills.split(",");
 
-        const skillsarray = skills.split(",");
+        }
         const userId=req.id;  //middleware authentication
         let user = await User.findById(userId);
         
@@ -121,11 +124,11 @@ export const updateProfile = async (req,res) => {
                 success:false
             })
         }
-        user.fullname=fullname,
-        user.email=email,
-        user.contactno=contactno,
-        user.profile.bio= bio,
-        user.profile.skills=skillsarray
+        if(fullname) user.fullname=fullname
+        if(email) user.email=email
+        if(contactno) user.contactno=contactno
+        if(bio) user.profile.bio= bio
+       if(skills) user.profile.skills=skillsarray
 
         // Resume content will come here , will do it later
 

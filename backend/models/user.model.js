@@ -14,12 +14,12 @@ const userSchema = new mongoose.Schema({
         required:true
     },
     password:{
-        type:Number,
+        type:String,
         required:true
     },
     role:{
         type:String,
-        enum:['Candidate','Recuiter'],
+        enum:['candidate','recruiter'],
         required:true
     },
     profile:{
