@@ -1,4 +1,5 @@
 import {Company} from "../models/company.model.js";
+
 export const registerCompany = async (req,res) => {
     try {
         const {companyName} = req.body;
@@ -10,7 +11,7 @@ export const registerCompany = async (req,res) => {
         }
         // if someone tries to add the same name or same company
         let company = await Company.findOne({name:companyName});
-        if(Company){
+        if(company){
             return res.status(400).json({
                 message:"You cannot register same company name",
                 success:false
@@ -41,6 +42,10 @@ export const getCompany = async (req,res) => {
                 success:false
             })
         }
+        return res.status(200).json({
+            companies,
+            success:true
+        })
     } catch (error) {
         console.log(error);
     }
@@ -85,6 +90,7 @@ export const updateCompany = async (req,res) => {
         }
         return res.status(200).json({
             message:"Company information updated",
+            company,
             success:true
         })
     } catch (error) {
