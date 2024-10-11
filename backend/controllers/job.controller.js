@@ -42,7 +42,11 @@ export const getAllJobs= async (req,res) => {
                 {description:{$regex:keyword, $options:"i"}}
             ]
         };
-        const jobs = await Job.find(query);
+        // populate(): This method is used to replace a path in the result (in this case, the company field) with actual documents from another collection. Typically, this is used for MongoDB references where a job document contains a reference (such as an ID) to a company document.
+        const jobs = await Job.find(query).populate({
+            path:"company"
+        }).sort({ createdAt: -1});
+        // sort({ createdAt: -1 }): This sorts the results based on the createdAt field in descending order (-1 indicates descending). It ensures that the most recently created jobs appear first.
         if(!jobs){
             return res.status(404).json({
                 message:"Jobs not found",
