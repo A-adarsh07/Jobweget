@@ -16,7 +16,7 @@ const app = express();
 
 // app.get("/home", (req,res) => {
 //     return res.status(200).json ({
-//         message:"Data coming from Backend",
+//         message:"Data coming from Backend"
 //         success:true
 //     })
 // })
