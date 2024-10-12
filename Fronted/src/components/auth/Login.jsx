@@ -66,7 +66,7 @@ const Login = () => {
                             value={input.email}
                             name="email"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="adarshmishra10@gmail.com"
                         />
                     </div>
 
@@ -77,7 +77,7 @@ const Login = () => {
                             value={input.password}
                             name="password"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="Adarsh@123"
                         />
                     </div>
                     <div className='flex items-center justify-between'>
@@ -86,8 +86,8 @@ const Login = () => {
                                 <Input
                                     type="radio"
                                     name="role"
-                                    value="student"
-                                    checked={input.role === 'student'}
+                                    value="candidate"
+                                    checked={input.role === 'candidate'}
                                     onChange={changeEventHandler}
                                     className="cursor-pointer"
                                 />

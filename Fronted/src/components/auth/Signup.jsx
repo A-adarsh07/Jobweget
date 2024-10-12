@@ -17,7 +17,7 @@ const Signup = () => {
     const [input, setInput] = useState({
         fullname: "",
         email: "",
-        phoneNumber: "",
+        contactno: "",
         password: "",
         role: "",
         file: ""
@@ -37,7 +37,7 @@ const Signup = () => {
         const formData = new FormData();    //formdata object
         formData.append("fullname", input.fullname);
         formData.append("email", input.email);
-        formData.append("phoneNumber", input.phoneNumber);
+        formData.append("contactno", input.contactno);
         formData.append("password", input.password);
         formData.append("role", input.role);
         if (input.file) {
@@ -80,7 +80,7 @@ const Signup = () => {
                             value={input.fullname}
                             name="fullname"
                             onChange={changeEventHandler}
-                            placeholder="patel"
+                            placeholder="Adarsh Mishra"
                         />
                     </div>
                     <div className='my-2'>
@@ -90,7 +90,7 @@ const Signup = () => {
                             value={input.email}
                             name="email"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="adarshmishra10@gmail.com"
                         />
                     </div>
                     <div className='my-2'>
@@ -110,7 +110,7 @@ const Signup = () => {
                             value={input.password}
                             name="password"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="Adarsh@123"
                         />
                     </div>
                     <div className='flex items-center justify-between'>
@@ -119,8 +119,8 @@ const Signup = () => {
                                 <Input
                                     type="radio"
                                     name="role"
-                                    value="student"
-                                    checked={input.role === 'student'}
+                                    value="candidate"
+                                    checked={input.role === 'candidate'}
                                     onChange={changeEventHandler}
                                     className="cursor-pointer"
                                 />
