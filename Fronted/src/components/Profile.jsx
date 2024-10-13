@@ -41,7 +41,7 @@ const Profile = () => {
                     </div>
                     <div className='flex items-center gap-3 my-2'>
                         <Contact />
-                        <span>{user?.phoneNumber}</span>
+                        <span>{user?.contactno}</span>
                     </div>
                 </div>
                 <div className='my-5'>

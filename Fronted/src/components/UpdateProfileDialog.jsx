@@ -17,7 +17,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     const [input, setInput] = useState({
         fullname: user?.fullname || "",
         email: user?.email || "",
-        phoneNumber: user?.phoneNumber || "",
+        contactno: user?.contactno || "",
         bio: user?.profile?.bio || "",
         skills: user?.profile?.skills?.map(skill => skill) || "",
         file: user?.profile?.resume || ""
@@ -38,7 +38,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         const formData = new FormData();
         formData.append("fullname", input.fullname);
         formData.append("email", input.email);
-        formData.append("phoneNumber", input.phoneNumber);
+        formData.append("contactno", input.contactno);
         formData.append("bio", input.bio);
         formData.append("skills", input.skills);
         if (input.file) {
@@ -104,7 +104,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 <Input
                                     id="number"
                                     name="number"
-                                    value={input.phoneNumber}
+                                    value={input.contactno}
                                     onChange={changeEventHandler}
                                     className="col-span-3"
                                 />
