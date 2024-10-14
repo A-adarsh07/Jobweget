@@ -97,7 +97,7 @@ const Signup = () => {
                         <Label>Phone Number</Label>
                         <Input
                             type="text"
-                            value={input.phoneNumber}
+                            value={input.contactno}
                             name="phoneNumber"
                             onChange={changeEventHandler}
                             placeholder="8080808080"
